@@ -16,9 +16,9 @@ end
 
 to_dict(a) = Dict((a[:, 1] .=> a[:, 2])...)
 tags =  try 
-    readdlm(tags_file, '\t') |> to_dict
+    readdlm(tags_file, '\t', header=true) |> to_dict
 catch
-    Dict()
+    Dict{Integer, AbstractString}()
 end
 
 function process_name(name)
